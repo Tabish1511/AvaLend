@@ -10,6 +10,7 @@ const CreateApplication = () => {
   const [employmentStatus, setEmploymentStatus] = useState<string>("")
   const [error, setError] = useState<string>("")
   const navigate = useNavigate()
+  const apiUrl = import.meta.env.VITE_API_URL;
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault()
@@ -28,7 +29,7 @@ const CreateApplication = () => {
     }
 
     try {
-      const response = await fetch("http://localhost:8000/submit_application", {
+      const response = await fetch(`${apiUrl}/submit_application`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",

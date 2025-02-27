@@ -22,6 +22,8 @@ const Home = () => {
   const [error, setError] = useState("")
   const navigate = useNavigate()
 
+  const apiUrl = import.meta.env.VITE_API_URL;
+
   useEffect(() => {
     const fetchLoans = async () => {
       const token = localStorage.getItem("token")
@@ -31,7 +33,7 @@ const Home = () => {
       }
 
       try {
-        const response = await fetch("http://localhost:8000/get_all_applications", {
+        const response = await fetch(`${apiUrl}/get_all_applications`, {
           headers: {
             Authorization: `Bearer ${token}`,
           },
